@@ -7,11 +7,11 @@
 <!-- DISEÑO ENRIQUE START -->
 <div *ngIf="PublicacionesAdministrador; else loggedOut" class="container-fluid">
   <ng-container *ngIf="condicion; else elseTemplate">
-    <h1 class="animated tada text-center "><b>Vista de administrador </b></h1>
+    <h1 class="animated tada text-center "><b>Vista de administrador. </b></h1>
   </ng-container>
   <ng-template #elseTemplate>
     <h1 class="animated tada">
-      <b><i>Nuestro Blog - Kmegavisión</i></b>
+      <b><i>Nuestro Blog - Kmegavisión.</i></b>
     </h1>
   </ng-template>
 
@@ -22,21 +22,12 @@
   <!-- empieza container fluid -->
   <div class="fila">
     <!-- empieza un contador de mi objeto json que me llega del servidor -->
-    <div
-      *ngFor="let articulo of PublicacionesAdministrador; let i = index"
-      class="columnas"
-    >
+    <div *ngFor="let articulo of PublicacionesAdministrador; let i = index" class="columnas">
       <h4>
         {{ articulo.titulo }}
       </h4>
       <cl-image [public-id]="articulo.imagen.id">
-        <cl-transformation
-          width="400"
-          height="400"
-          gravity="face"
-          radius="max"
-          crop="crop"
-        >
+        <cl-transformation width="400" height="400" gravity="face" radius="max" crop="crop">
         </cl-transformation>
         <cl-transformation width="200" crop="scale"> </cl-transformation>
       </cl-image>
@@ -65,15 +56,11 @@
 
 <!-- loading chimba -->
 
-<ngx-loading
-  [show]="loading"
-  [config]="{
+<ngx-loading [show]="loading" [config]="{
     animationType: ngxLoadingAnimationTypes.chasingDots,
     primaryColour: primaryColour,
     secondaryColour: secondaryColour,
     fullScreenBackdrop: fullscreenloadingdecision,
     backdropBorderRadius: radio,
     backdropBackgroundColour: colorback
-  }"
-  [template]="loadingTemplate"
-></ngx-loading>
+  }" [template]="loadingTemplate"></ngx-loading>
