@@ -1,0 +1,83 @@
+body{
+    background-color:#9ea199;
+    background-size: 100vh 100vh;
+    margin: 0;
+    font-family: Helvetica;
+    text-align: center;
+    border-radius: 10px;
+    
+   
+
+}
+
+
+
+p{
+    width: 100%;
+    height:100%;
+    position: relative;
+    text-align: justify;
+    font-family: helvetica;
+
+}
+
+
+
+h1{
+    text-align: center;
+    font-size: 300%;
+    padding: 15px;
+    color: green;
+    background-color:#fff;
+}
+
+h3{
+
+    text-align: center;
+    font-size: 200%;
+    color: green;
+
+}
+
+.container{
+    width:100%;
+    height:100%;
+}
+
+.cajota-video-container {
+    padding-top: 20px;
+    background:  rgb(235, 238, 231);
+    font-family: Lato;
+}
+
+.sala-video {
+    border: 1px solid #e6e6e6;
+    padding: 5px;
+}
+
+    .sala-video:hover {
+        background: #29be74;
+     
+    }
+
+.pb-video-frame {
+    transition: width 2s, height 2s;
+}
+
+    .Kmegavision-video-frame:hover {
+        height: 300px;
+    }
+
+.cajitas-row {
+    margin-bottom: 10px;
+   
+}
+
+footer{
+    background-color: #96db967a;
+    padding: 30px 100px;
+    text-align: center;
+    font-family: Helvetica;
+    transition: width 2s, height 2s;
+
+}

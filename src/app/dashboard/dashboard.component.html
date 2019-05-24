@@ -1,0 +1,235 @@
+<!-- LA TABLA -->
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
+    <a class="navbar-brand" [routerLink]="['/home']"><img src="assets/Imagenes/San rafael.jpg" class="rounded-circle "
+            alt="Hecgo por Cristian" width="50" height="50" />Kmegavisión</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+
+
+            <li class="nav-item active">
+                <a [routerLink]="['/home']" class="nav-link "> Home</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link " [routerLink]="['/plataforma']">Admin</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link " [routerLink]="['/post']">Post Blog</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link " [routerLink]="['/prueba']">Mis Blogs</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- fin menu -->
+<br>
+<br>
+<br>
+
+
+<!-- efecto visual engañoso de carga -->
+<div *ngIf="loadingElegante ">
+    <div class="fondoTransparente ">
+
+
+        <div class="d-flex justify-content-center" role="status">
+            <!-- <i class="pi pi-spin pi-spinner mx-auto position-absolute " style="font-size: 10em; color: orange;"></i> -->
+
+
+            <!-- spinner elegante -->
+
+            <div class="loader">
+                <div class="inner one"></div>
+                <div class="inner two"></div>
+                <div class="inner three"></div>
+
+                <p style="color:white" class="cargandoCarg animated fadeIn m-0">Cargando</p>
+            </div>
+
+
+
+
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+
+</div>
+
+<h5 class="text-center">
+    Formulario
+</h5>
+
+<ng-container *ngIf="clientes; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate class="animated fadeInLeft">
+
+    <p-table #tt [value]="clientes" [columns]="cols" [paginator]="paginator" selectionMode="single" [rows]="filas"
+        sortMode="multiple" [multiSortMeta]="multiSortMeta" [(selection)]="selectedCustomer"
+        (onRowSelect)="onRowSelect($event)">
+        <ng-template pTemplate="caption">
+            Formulario Clientes
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" style="font-weight:bold !important;" placeholder="Busqueda Global"
+                (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of headersTable" [pSortableColumn]="col">
+                    {{col}}
+                    <p-sortIcon [field]="col" ariaLabel="Activate to sort"
+                        ariaLabelDesc="Activate to sort in descending order"
+                        ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <input *ngSwitchCase="'nombre'" pInputText type="text"
+                        (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <input *ngSwitchCase="'telefono'" pInputText type="text"
+                        (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <input *ngSwitchCase="'tratamiento'" pInputText type="text"
+                        (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <p-multiSelect *ngSwitchCase="'fecha'" [options]="meses" defaultLabel="Filtro Fecha"
+                        (onChange)="tt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                    <p-multiSelect *ngSwitchCase="'mes'" [options]="meses" defaultLabel="Filtro Fecha"
+                        (onChange)="tt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                    <input *ngSwitchCase="'correo'" pInputText type="text"
+                        (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <input *ngSwitchCase="'mensaje'" pInputText type="text"
+                        (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                    <input *ngSwitchCase="'ciudad'" pInputText type="text"
+                        (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                </th>
+            </tr>
+        </ng-template>
+
+        <!-- PTABLE CUERPO -->
+        <ng-template pTemplate="body" let-customer let-columns="columns">
+            <tr [pSelectableRow]="customer">
+                <!--  <td *ngFor="let col of columns">
+                <div *ngIf="customer[col.field] === customer.date; else osinohaga ">
+                    {{customer[col.field] | date}}
+                  </div>
+
+
+
+                  <ng-template #osinohaga >
+                      {{customer[col.field]}}
+                  </ng-template>
+
+            </td> -->
+
+                <td [ngClass]="{'nuevoCliente': customer.nombre}">
+                    {{customer.nombre.charAt(0).toUpperCase() + customer.nombre.slice(1)}} </td>
+                <td> {{customer.telefono}}</td>
+                <td> {{customer.tratamiento}}</td>
+                <td> {{customer.date | date:'medium'  }}</td>
+                <!-- <td> {{customer.correo}}</td>
+              <td> {{customer.mensaje}}</td>
+              <td> {{customer.ciudad}}</td> -->
+            </tr>
+        </ng-template>
+        <!-- END OF P-TABLE BODY -->
+        <ng-template pTemplate="paginatorleft" let-state>
+            que hay aca {{state.totalRecords}}
+            <button type="button" pButton icon="fa-refresh"></button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <button type="button" pButton icon="fa-cloud-upload"></button>
+        </ng-template>
+        <ng-template pTemplate="footer" let-columns>
+            <tr>
+                <td *ngFor="let col of headersTable">
+                    {{col.header}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            Hay {{clientes?.length}} clientes Registrados
+        </ng-template>
+    </p-table>
+
+</ng-template>
+<ng-template #elseTemplate>
+    <h2>error en el servidor trayendo clientes</h2>
+</ng-template>
+
+<!-- <ng-flash-message></ng-flash-message> -->
+
+<!-- fin de tabla -->
+<!-- comience modal para agregar clientes -->
+<div *ngIf="clonObjetoCliente">
+    <p-dialog [header]="'detalles del cliente '+clonObjetoCliente.nombre " [(visible)]="displayDialog"
+        [responsive]="false" showEffect="shake" [modal]="true" [style]="{width: '60%'}" [dismissableMask]="true"
+        baseZIndex=9999999 [maximizable]="true">
+        <div class="ui-g ui-fluid" *ngIf="clonObjetoCliente">
+            <div class="ui-g-12 border">
+                <p class="text-center"><b>{{clonObjetoCliente.nombre}}</b></p>
+            </div>
+
+            <div class="ui-g-12 border">
+                <div class="ui-g-4">
+                    <label for="celular">telefono</label>
+                </div>
+                <div class="ui-g-4">
+                    <p class="text-center"><b>{{clonObjetoCliente.telefono}}</b></p>
+
+                </div>
+            </div>
+            <div class="ui-g-12 border">
+                <div class="ui-g-4">
+                    <label for="cedula">tratamiento</label>
+                </div>
+                <div class="ui-g-4">
+                    <p class="text-center"><b>{{clonObjetoCliente.tratamiento}}</b></p>
+
+                </div>
+            </div>
+            <div class="ui-g-12 border">
+                <div class="ui-g-4">
+                    <label for="cedula">correo</label>
+                </div>
+                <div class="ui-g-4">
+                    <p class="text-center"><b>{{clonObjetoCliente.correo}}</b></p>
+
+                </div>
+            </div>
+            <div class="ui-g-12 border">
+                <div class="ui-g-4">
+                    <label for="cedula">fecha</label>
+                </div>
+                <div class="ui-g-4">
+                    <p class="text-center"><b>{{clonObjetoCliente.date | date}}</b></p>
+
+                </div>
+            </div>
+            <div class="ui-g-12 border">
+                <div class="ui-g-4">
+                    <label for="cedula">mensaje</label>
+                </div>
+                <div class="ui-g-4">
+                    <p class="text-center"><b>{{clonObjetoCliente.mensaje}}</b></p>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </p-dialog>
+
+
+</div>
+<div class="w-100 border border-primary d-flex justify-content-center">
+    <button class="btn btn-dark w-50 mx-auto animated bounceInUp delay-1s" (click)="salgase($event)">SALIR</button>
+</div>

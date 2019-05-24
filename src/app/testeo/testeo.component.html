@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<br>
+<br>
+<br>
+
+<!-- DISEÑO ENRIQUE START -->
+<div *ngIf="PublicacionesAdministrador; else loggedOut" class="container-fluid">
+  <h1 class="animated tada"><b><i>Nuestro Blog - Kmegavisión</i></b></h1>
+  <h3 class="text-xs-center animated swing">Siempre Brindandote La Mejor Información</h3><br><br>
+  <!-- empieza container fluid -->
+  <div class="fila">
+    <!-- empieza un contador de mi objeto json que me llega del servidor -->
+    <div *ngFor="let articulo of PublicacionesAdministrador; let i = index" class="columnas">
+      <h4>
+        {{articulo.titulo}}
+      </h4>
+      <cl-image [public-id]="articulo.imagen.id">
+        <cl-transformation width="400" height="400" gravity="face" radius="max" crop="crop">
+        </cl-transformation>
+        <cl-transformation width="200" crop="scale">
+        </cl-transformation>
+      </cl-image>
+      <p> {{articulo.articulo}} </p>
+      <b>
+        {{articulo.date | date:'medium'}}
+      </b><br>
+      <button class="btn btn-light mx-auto" (click)="borrar(articulo)">Borrar Articulo</button>
+    </div>
+    <!-- termina un contador de mi objeto json que me llega del servidor -->
+  </div><!-- fin de contador -->
+</div><!-- fin de if -->
+
+
+
+
+
+<br><br>
+<footer>
+  &copy;2019 Todos los derechos estan reservados por kmegavisión.
+
+
+</footer>
+
+
+
+
+
+
+
+<ng-template #loggedOut>
+  <h1>No hay publicaciones en el momento</h1>
+</ng-template>
+
+<!-- loading chimba -->
+
+<ngx-loading [show]="loading" [config]="{
+  animationType: ngxLoadingAnimationTypes.chasingDots,
+  primaryColour: primaryColour,
+  secondaryColour: secondaryColour,
+  fullScreenBackdrop: fullscreenloadingdecision,
+  backdropBorderRadius: radio,
+  backdropBackgroundColour: colorback
+}" [template]="loadingTemplate"></ngx-loading>

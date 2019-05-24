@@ -1,0 +1,6 @@
+.is-invalid-icon{
+  color:rgb(23, 54, 13) !important;
+  font-weight: bolder;
+  background: rgba(9, 255, 0, 0.13) !important;
+  text-shadow: 3px 3px 4px 20px red;
+}

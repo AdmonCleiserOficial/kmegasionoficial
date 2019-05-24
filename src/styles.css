@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body{
+    background-color: rgb(235, 238, 231);
+  }
+
+
+
+
+   .iconosTamaño{
+     font-size: 35px;
+   }
+  .payu{
+    margin-top: 2%;
+   width: 70%;
+  }
+
+  .mapa{
+    font-style: normal;
+  }
+
+  h1{
+    font-family: Helvetica;
+    font-size: 45px;
+    color:green;
+    text-align: center;
+  }
+
+  h5{
+    font-family: Helvetica;
+    font-size: 40px;
+    text-align: center;
+    color: green;
+  }
+
+  .texto{
+    font-family: Arial;
+    font-size: 15px;
+    color:green;
+
+  }
+
+  p{
+
+    text-align: justify;
+
+  }
+
+  h6{
+    text-align:initial;
+  }
+
+  .modal-title{
+    text-align: center;
+    color:green;
+    font-size: 30px;
+  }
+
+
+
+
+

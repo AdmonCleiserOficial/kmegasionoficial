@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="Es">
+<head>
+  <meta charset="utf-8">
+  <title>Kmegavisión</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/Kmegavisión.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
+  <link rel="icon" type="img/jpg" href="assets/Imagenes/Kmegavisión.ico" />
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css" />
+    <link rel="stylesheet"  type="text/css" href="assets/css/hover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!-- iconos bien chimbas -->
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all"> 
+  </head>
+<body>
+  <!-- componente principal -->
+  <app-root></app-root>
+  
+  <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script  type="text/javascript" src="assets/js/Kmegavisión animaciones.js"></script>
+  <script>
+    $('.carousel').carousel({
+        interval: 2300,
+        keyboard: true,
+        ride: "true"
+    });
+
+  </script>
+   <!-- WhatsHelp.io widget -->
+ <script type="text/javascript">
+  (function () {
+  var options = {
+  whatsapp: "+573123814330", // WhatsApp number
+  call_to_action: "Agenda Tu Cita", // Call to action
+  position: "right", // Position may be 'right' or 'left'
+  };
+  var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+  s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+  var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+  })();
+  </script>
+  <!-- /WhatsHelp.io widget --> 
+
+ 
+
+
+</body>
+</html>

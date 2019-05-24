@@ -1,0 +1,194 @@
+
+
+
+<div class="animated fadeInDownBig">
+  <h5 class="modal-title col-12" id="exampleModalLongTitle">
+    Llena el formulario & agenda Gratis Tú cita
+    <img
+      src="assets/Imagenes/tarjeta-2 (1).png"
+      class=" col-12"
+      alt=""
+      width="430"
+      height="200"
+    />
+  </h5>
+
+  <form (ngSubmit)="usuarioMetioDatos()" [formGroup]="formReg">
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputname"></label>
+        <input
+          type="nombre"
+          class="form-control"
+          id="inputname"
+          placeholder="Cual es tu nombre"
+          name="nombre"
+          formControlName="nombre"
+          [ngClass]="{'is-invalid-icon':nombregetter.invalid && nombregetter.touched}"
+
+        />
+            <!-- name validaciones -->
+            <div *ngIf="nombregetter.invalid && (nombregetter.dirty || nombregetter.touched) position-absolute">
+                <div *ngIf="nombregetter.errors.required" class="animated pulse">
+                  <label class="text-orange" for="inpName"><b>Olvidaste colocar Tu Nombre </b> </label>
+                </div>
+              </div>
+            <!-- fin name validacones -->
+
+      </div>
+      <div class="form-group col-md-12">
+        <label for="inputEmail"></label>
+        <input
+          type="email"
+          class="form-control "
+          id="inputEmail"
+          placeholder="¿Cual es tú correo electrónico?"
+          formControlName="correo"
+          [ngClass]="{'is-invalid-icon':correogetter.invalid && correogetter.touched}"
+
+          name="correo"
+        />
+           <!-- correo validaciones -->
+           <div *ngIf="correogetter.invalid && (correogetter.dirty || correogetter.touched )">
+
+              <div *ngIf="correogetter.errors.tieneArroba" class="animated pulse">
+                 <b> <p> Te falto poner la Arroba @</p></b>
+
+              </div>
+
+              <div *ngIf="correogetter.errors.required" class="animated pulse">
+               <b><p>Ingresa tu Email por favor..!</p></b>
+              </div>
+
+              <div *ngIf="correogetter.errors.email" class="animated pulse">
+                 <b> <p>Parece que digitaste mal el correo! </p></b>
+
+
+              </div>
+
+          </div>
+          <!-- fin correo validaciones -->
+      </div>
+      <div class="form-group col-md-12">
+        <label for="inputEmail"></label>
+        <input
+          type="text"
+          class="form-control "
+          id="inputEmail"
+          placeholder="¿Cual es tú telefono?"
+          formControlName="telefono"
+          [ngClass]="{'is-invalid-icon':telefonogetter.invalid && telefonogetter.touched}"
+          name="telefono"
+        />
+         <!-- start valida cel -->
+         <div *ngIf="telefonogetter.invalid && (telefonogetter.dirty || telefonogetter.touched )">
+            <div *ngIf="telefonogetter.errors.required" class="animated heartBeat pulse">
+              <b><p>Ingresa tu Celular.!</p></b>
+            </div>
+
+            <div *ngIf="telefonogetter.errors.tieneNumero" class="animated heartBeat pulse">
+               <b> <p>Sin letras por favor.</p></b>
+
+              </div>
+          </div>
+                <!-- fin valida celular -->
+
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputCiudad"></label>
+        <input
+          type="Ciudad"
+          class="form-control"
+          id="inputCiudad"
+          placeholder="¿En que ciudad resides?"
+          formControlName="ciudad"
+          [ngClass]="{'is-invalid-icon':ciudadgetter.invalid && ciudadgetter.touched}"
+          name="ciudad"
+        />
+             <!-- ciudad validaciones -->
+             <div *ngIf="ciudadgetter.invalid && (ciudadgetter.dirty || ciudadgetter.touched) position-absolute">
+                <div *ngIf="ciudadgetter.errors.required" class="animated pulse">
+                  <label class="text-orange" for="inpName"><b>Olvidaste colocar Tu Ciudad </b> </label>
+                </div>
+              </div>
+            <!-- fin ciudad validacones -->
+      </div>
+      <div
+      style="height:30px; border: 2px solid white;"></div>
+
+      <div class="form-group col-md-12 w-100 ">
+        <p-dropdown
+         [options]="treatments"
+         formControlName="Tratamientos"
+         name="Tratamientos"
+         class=" "
+         [style]="{'width':'100%'}"
+         autoWidth="false"
+         [ngClass]="{'is-invalid-icon':tratamientogetter.invalid && nombregetter.touched}"
+        ></p-dropdown>
+      <br>
+      {{tratamientogetter.value.name || 'no hay valor'}}
+      <p
+      *ngIf="tratamientogetter.value && tratamientogetter.value !== '¿Cual es tú Tratamiento?'"
+      class="animated fadeInDown">
+      usted ha seleccionado el tratamiento para
+       <b>{{tratamientogetter.value.name}} </b> </p>
+
+             <!-- tratamiento validaciones -->
+             <div *ngIf="tratamientogetter.invalid && (tratamientogetter.dirty || tratamientogetter.touched) position-absolute">
+                <div *ngIf="tratamientogetter.errors.required" class="animated pulse">
+                  <label class="text-orange" for="inpName"><b>Olvidaste colocar Tu tratamiento </b> </label>
+                </div>
+              </div>
+            <!-- fin tratamiento validacones -->
+      </div>
+
+      <div class="form-group mx-auto col-md-12 ">
+        <label for="inputmsmtext"></label>
+        <textarea
+          class="form-control"
+          id="inputmsmtext"
+          rows="2"
+          placeholder="Dejanos tu mensaje"
+          formControlName="mensaje"
+          [ngClass]="{'is-invalid-icon':msjsgetter.invalid && msjsgetter.touched}"
+          name="mensaje"
+        ></textarea>
+           <!-- tratamiento validaciones -->
+           <div *ngIf="msjsgetter.invalid && (msjsgetter.dirty || msjsgetter.touched) position-absolute">
+              <div *ngIf="msjsgetter.errors.required" class="animated pulse">
+                <label class="text-orange" for="inpName"><b>Olvidaste colocar Tu mensaje </b> </label>
+              </div>
+            </div>
+          <!-- fin tratamiento validacones -->
+
+      </div>
+    </div>
+    <div class="modal-footer mx-auto">
+      <button type="submit" class="btn btn-success mx-auto">Agendar Mi Cita</button>
+    </div>
+
+    <b *ngIf="tratamientogetter.value && nombregetter.value"  class="animated bounceInUp"><i>hola {{nombregetter.value}} escogiste un tratamiento para la {{tratamientogetter.value.name}}</i> </b>
+
+  </form>
+
+</div>
+
+
+<!-- loading chimba -->
+
+<ngx-loading
+[show]="loading"
+[config]="{
+  animationType: ngxLoadingAnimationTypes.chasingDots,
+  primaryColour: primaryColour,
+  secondaryColour: secondaryColour,
+  fullScreenBackdrop: fullscreenloadingdecision,
+  backdropBorderRadius: radio,
+  backdropBackgroundColour: colorback
+}"
+[template]="loadingTemplate"
+></ngx-loading>

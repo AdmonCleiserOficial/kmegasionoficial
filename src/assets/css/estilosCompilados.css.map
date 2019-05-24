@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,KAAK,CAAA;EACD,KAAK,EAJO,IAAI;CAKnB",
+    "sources": [
+        "estilosCompilados.scss"
+    ],
+    "names": [],
+    "file": "estilosCompilados.css"
+}
