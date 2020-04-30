@@ -26,7 +26,7 @@
     "cloudinary-core": "^2.6.3",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-flash-messages": "^0.3.0",
     "ngx-bootstrap": "^4.0.1",
     "ngx-loading": "^3.0.1",
